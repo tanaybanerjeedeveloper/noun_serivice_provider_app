@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'screens/home_screen.dart';
+import 'widgets/bottom_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
           tertiary: const Color(0xff11131b),
         ),
       ),
-      home: HomeScreen(),
+      home: BottomNavigation(),
     );
   }
 }

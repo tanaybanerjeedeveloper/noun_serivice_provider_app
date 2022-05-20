@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import '../screens/home_screen.dart';
+import '../screens/notifications_screen.dart';
+import '../screens/booking_history_screen.dart';
+import '../screens/payment_history_screen.dart';
+import '../screens/booking_upcoming_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   static const id = 'bottom_navigation_bar';
@@ -12,11 +16,11 @@ class BottomNavigationState extends State<BottomNavigation> {
   final bool pointer = false;
   int index = 2;
   final screens = [
-    // NotificationsScreen(),
-    // BookingListScreen(),
+    NotificationsScreen(),
+    BookingHistoryScreen(),
     HomeScreen(),
-    // DashboardScreen(),
-    // GalleryScreen(),
+    BookingUpcomingScreen(),
+    PaymentHistoryScreen(),
   ];
 
   @override
@@ -50,7 +54,7 @@ class BottomNavigationState extends State<BottomNavigation> {
         color: index == 3 ? Theme.of(context).primaryColor : Colors.white,
       ),
       Image.asset(
-        'assets/images/gallery.png',
+        'assets/images/payment2.png',
         width: index == 4 ? width * 0.15 : width * 0.7,
         height: index == 4 ? height * 0.04 : height * 0.2,
         color: index == 4 ? Theme.of(context).primaryColor : Colors.white,

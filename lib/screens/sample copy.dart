@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class StationScreen extends StatefulWidget {
-  StationScreenState createState() => StationScreenState();
+class HomePage extends StatefulWidget {
+  HomePageState createState() => HomePageState();
 }
 
-class StationScreenState extends State<StationScreen> {
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final height = (MediaQuery.of(context).size.height);
@@ -17,12 +17,71 @@ class StationScreenState extends State<StationScreen> {
         body: Container(
       width: double.infinity,
       height: double.infinity,
-      // decoration: const BoxDecoration(color: Colors.amber),
+      decoration: const BoxDecoration(color: Colors.amber),
       child: Stack(
         children: [
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.05),
+                  child: Text(
+                    'Get Set Go',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: !tabLayout && !largeLayout ? 25 : 35),
+                  ),
+                ),
+                Container(
+                  width: width * 0.7,
+                  height: !tabLayout && !largeLayout
+                      ? height * 0.07
+                      : height * 0.055,
+                  margin:
+                      EdgeInsets.only(top: height * 0.02, left: width * 0.02),
+                  padding: EdgeInsets.only(left: width * 0.02),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.greenAccent,
+                            // spreadRadius: 5,
+                            blurRadius: 5,
+                            offset: Offset(0, 2))
+                      ]),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        color: Colors.green,
+                        size: !tabLayout && !largeLayout ? 25 : 30,
+                      ),
+                      SizedBox(width: width * 0.04),
+                      Text(
+                        'Locate',
+                        // textScaleFactor: textScaleFactor,
+                        style: TextStyle(
+                            color: Colors.grey.withOpacity(0.6),
+                            fontSize: !tabLayout && !largeLayout ? 20 : 25),
+                      )
+                    ],
+                  ),
+                )
+              ],
+              // ),
+              // Container(
+              //   width: width * 0.3,
+              // )
+            ),
+          ),
           Positioned(
             left: width * 0.25,
-            top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.25,
+            top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.4,
             right: width * 0.25,
             child: Container(
               width: width * 0.05,
@@ -51,7 +110,7 @@ class StationScreenState extends State<StationScreen> {
           ),
           Positioned(
             left: width * 0.25,
-            top: height * 0.09,
+            top: height * 0.25,
             right: width * 0.25,
             child: Padding(
               padding: EdgeInsets.only(left: width * 0.12, right: width * 0.12),
@@ -90,7 +149,7 @@ class StationScreenState extends State<StationScreen> {
                     ),
                     SizedBox(height: height * 0.005),
                     Text(
-                      'Booking',
+                      'Present\n Orders',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: !tabLayout && !largeLayout ? 12 : 14),
@@ -102,7 +161,7 @@ class StationScreenState extends State<StationScreen> {
           ),
           Positioned(
             left: width * 0.05,
-            top: height * 0.20,
+            top: height * 0.42,
             // right: width * 0.6,
             child: Container(
               height:
@@ -151,7 +210,7 @@ class StationScreenState extends State<StationScreen> {
           ),
           Positioned(
             left: width * 0.7,
-            top: height * 0.20,
+            top: height * 0.42,
             // right: width * 0.6,
             child: Container(
               height:
@@ -199,8 +258,8 @@ class StationScreenState extends State<StationScreen> {
             ),
           ),
           Positioned(
-            left: width * 0.7,
-            top: height * 0.39,
+            left: width * 0.56,
+            top: height * 0.58,
             // right: width * 0.6,
             child: Container(
               height:
@@ -248,8 +307,8 @@ class StationScreenState extends State<StationScreen> {
             ),
           ),
           Positioned(
-            left: width * 0.05,
-            top: height * 0.39,
+            left: width * 0.2,
+            top: height * 0.58,
             // right: width * 0.6,
             child: Container(
               height:
@@ -294,58 +353,7 @@ class StationScreenState extends State<StationScreen> {
                 ],
               ),
             ),
-          ),
-          Positioned(
-            left: width * 0.25,
-            top: height * 0.49,
-            right: width * 0.25,
-            child: Padding(
-              padding: EdgeInsets.only(left: width * 0.12, right: width * 0.12),
-              child: Container(
-                height:
-                    !tabLayout && !largeLayout ? height * 0.16 : height * 0.15,
-                width: width * 0.15,
-                // color: Colors.amber,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: width * 0.02,
-                          top: height * 0.002,
-                          right: height * 0.01),
-                      child: InkWell(
-                        onTap: () =>
-                            Navigator.of(context).pushNamed('/present-orders'),
-                        child: Container(
-                          width: double.infinity,
-                          height: height * 0.1,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.green, width: 2),
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
-                                    offset: Offset(1, 2))
-                              ]),
-                          child: Image.asset('assets/images/presentOrders.png',
-                              scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: height * 0.005),
-                    Text(
-                      'Booking',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: !tabLayout && !largeLayout ? 12 : 14),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     ));
