@@ -5,6 +5,7 @@ class StationScreen extends StatefulWidget {
 }
 
 class StationScreenState extends State<StationScreen> {
+  final Color color = Color(0xff00edff);
   @override
   Widget build(BuildContext context) {
     final height = (MediaQuery.of(context).size.height);
@@ -25,30 +26,43 @@ class StationScreenState extends State<StationScreen> {
             top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.25,
             right: width * 0.25,
             child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '15',
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'slots remaining',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
               width: width * 0.05,
               height: height * 0.15,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset: Offset(1, 2))
-                  ]),
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Container(
-                  width: width * 0.02,
-                  height: height * 0.15,
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                  ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.tertiary,
+                border: Border.all(color: color, width: 3),
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/semi.png'),
+                  fit: BoxFit.fill,
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: color,
+                    blurRadius: 10,
+                    offset: Offset(1, 2),
+                  )
+                ],
               ),
             ),
           ),
+          //start form here
           Positioned(
             left: width * 0.25,
             top: height * 0.09,
@@ -74,21 +88,21 @@ class StationScreenState extends State<StationScreen> {
                           width: double.infinity,
                           height: height * 0.1,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.tertiary,
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.green, width: 2),
-                              boxShadow: const [
+                              border: Border.all(color: color, width: 3),
+                              boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
+                                    color: color,
+                                    blurRadius: 5,
                                     offset: Offset(1, 2))
                               ]),
-                          child: Image.asset('assets/images/presentOrders.png',
-                              scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                          // child: Image.asset('assets/images/presentOrders.png',
+                          //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: height * 0.005),
+                    SizedBox(height: height * 0.009),
                     Text(
                       'Booking',
                       style: TextStyle(
@@ -123,21 +137,21 @@ class StationScreenState extends State<StationScreen> {
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.tertiary,
                             shape: BoxShape.circle,
-                            border: Border.all(color: Colors.green, width: 2),
-                            boxShadow: const [
+                            border: Border.all(color: color, width: 3),
+                            boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
+                                  color: color,
+                                  blurRadius: 5,
                                   offset: Offset(1, 2))
                             ]),
-                        child: Image.asset('assets/images/orderHistory.png',
-                            scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                        // child: Image.asset('assets/images/orderHistory.png',
+                        //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.005),
+                  SizedBox(height: height * 0.009),
                   Text(
                     'Order\n History',
                     textAlign: TextAlign.center,
@@ -172,21 +186,21 @@ class StationScreenState extends State<StationScreen> {
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.tertiary,
                             shape: BoxShape.circle,
-                            border: Border.all(color: Colors.green, width: 2),
-                            boxShadow: const [
+                            border: Border.all(color: color, width: 3),
+                            boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
+                                  color: color,
+                                  blurRadius: 5,
                                   offset: Offset(1, 2))
                             ]),
-                        child: Image.asset('assets/images/cancelledOrders.png',
-                            scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                        // child: Image.asset('assets/images/cancelledOrders.png',
+                        //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.005),
+                  SizedBox(height: height * 0.009),
                   Text(
                     'Cancelled\n Orders',
                     textAlign: TextAlign.center,
@@ -221,21 +235,21 @@ class StationScreenState extends State<StationScreen> {
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.tertiary,
                             shape: BoxShape.circle,
-                            border: Border.all(color: Colors.green, width: 2),
-                            boxShadow: const [
+                            border: Border.all(color: color, width: 3),
+                            boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
+                                  color: color,
+                                  blurRadius: 5,
                                   offset: Offset(1, 2))
                             ]),
-                        child: Image.asset('assets/images/orderDetails.png',
-                            scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                        // child: Image.asset('assets/images/orderDetails.png',
+                        //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.005),
+                  SizedBox(height: height * 0.009),
                   Text(
                     'Order\n Details',
                     textAlign: TextAlign.center,
@@ -270,21 +284,21 @@ class StationScreenState extends State<StationScreen> {
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.tertiary,
                             shape: BoxShape.circle,
-                            border: Border.all(color: Colors.green, width: 2),
-                            boxShadow: const [
+                            border: Border.all(color: color, width: 3),
+                            boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 10,
+                                  color: color,
+                                  blurRadius: 5,
                                   offset: Offset(1, 2))
                             ]),
-                        child: Image.asset('assets/images/rating.png',
-                            scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                        // child: Image.asset('assets/images/rating.png',
+                        //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.005),
+                  SizedBox(height: height * 0.009),
                   Text(
                     'Rating',
                     style: TextStyle(
@@ -297,7 +311,7 @@ class StationScreenState extends State<StationScreen> {
           ),
           Positioned(
             left: width * 0.25,
-            top: height * 0.49,
+            top: height * 0.45,
             right: width * 0.25,
             child: Padding(
               padding: EdgeInsets.only(left: width * 0.12, right: width * 0.12),
@@ -320,21 +334,21 @@ class StationScreenState extends State<StationScreen> {
                           width: double.infinity,
                           height: height * 0.1,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).colorScheme.tertiary,
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.green, width: 2),
-                              boxShadow: const [
+                              border: Border.all(color: color, width: 3),
+                              boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
+                                    color: color,
+                                    blurRadius: 5,
                                     offset: Offset(1, 2))
                               ]),
-                          child: Image.asset('assets/images/presentOrders.png',
-                              scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
+                          // child: Image.asset('assets/images/presentOrders.png',
+                          //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                         ),
                       ),
                     ),
-                    SizedBox(height: height * 0.005),
+                    SizedBox(height: height * 0.009),
                     Text(
                       'Booking',
                       style: TextStyle(
