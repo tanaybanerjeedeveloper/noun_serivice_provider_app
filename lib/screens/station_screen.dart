@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'add_station_screen.dart';
+
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
 }
@@ -23,7 +25,7 @@ class StationScreenState extends State<StationScreen> {
         children: [
           Positioned(
             left: width * 0.25,
-            top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.25,
+            top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.27,
             right: width * 0.25,
             child: Container(
               child: Column(
@@ -85,6 +87,7 @@ class StationScreenState extends State<StationScreen> {
                         onTap: () =>
                             Navigator.of(context).pushNamed('/present-orders'),
                         child: Container(
+                          child: Image.asset('assets/images/charging.png'),
                           width: double.infinity,
                           height: height * 0.1,
                           decoration: BoxDecoration(
@@ -97,17 +100,20 @@ class StationScreenState extends State<StationScreen> {
                                     blurRadius: 5,
                                     offset: Offset(1, 2))
                               ]),
-                          // child: Image.asset('assets/images/presentOrders.png',
-                          //     scale: !tabLayout && !largeLayout ? 1.5 : 1.0),
                         ),
                       ),
                     ),
                     SizedBox(height: height * 0.009),
-                    Text(
-                      'Booking',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: FittedBox(
+                        child: Text(
+                          'Upcoming\n Booking',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -134,6 +140,7 @@ class StationScreenState extends State<StationScreen> {
                       onTap: () =>
                           Navigator.of(context).pushNamed('/order-history'),
                       child: Container(
+                        child: Image.asset('assets/images/timer.png'),
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
@@ -152,12 +159,16 @@ class StationScreenState extends State<StationScreen> {
                     ),
                   ),
                   SizedBox(height: height * 0.009),
-                  Text(
-                    'Order\n History',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                  Flexible(
+                    fit: FlexFit.loose,
+                    child: FittedBox(
+                      child: Text(
+                        'Booking\n history',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                      ),
+                    ),
                   )
                 ],
               ),
@@ -183,6 +194,7 @@ class StationScreenState extends State<StationScreen> {
                       onTap: () =>
                           Navigator.of(context).pushNamed('/cancelled-orders'),
                       child: Container(
+                        child: Image.asset('assets/images/qrcode.png'),
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
@@ -202,7 +214,7 @@ class StationScreenState extends State<StationScreen> {
                   ),
                   SizedBox(height: height * 0.009),
                   Text(
-                    'Cancelled\n Orders',
+                    'QR Code',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -229,9 +241,10 @@ class StationScreenState extends State<StationScreen> {
                         top: height * 0.002,
                         right: height * 0.01),
                     child: InkWell(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed('/order-details'),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AddStationScreen.routeName),
                       child: Container(
+                        child: Image.asset('assets/images/add.png'),
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
@@ -250,12 +263,17 @@ class StationScreenState extends State<StationScreen> {
                     ),
                   ),
                   SizedBox(height: height * 0.009),
-                  Text(
-                    'Order\n Details',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                  Flexible(
+                    fit: FlexFit.loose,
+                    child: FittedBox(
+                      child: Text(
+                        'Add\n Stations',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                      ),
+                    ),
                   )
                 ],
               ),
@@ -281,6 +299,7 @@ class StationScreenState extends State<StationScreen> {
                       onTap: () =>
                           Navigator.of(context).pushNamed('/profile-screen'),
                       child: Container(
+                        child: Image.asset('assets/images/payment2.png'),
                         width: double.infinity,
                         height: height * 0.1,
                         decoration: BoxDecoration(
@@ -298,9 +317,9 @@ class StationScreenState extends State<StationScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: height * 0.009),
+                  SizedBox(height: height * 0.01),
                   Text(
-                    'Rating',
+                    'Payment',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: !tabLayout && !largeLayout ? 12 : 14),
@@ -331,6 +350,7 @@ class StationScreenState extends State<StationScreen> {
                         onTap: () =>
                             Navigator.of(context).pushNamed('/present-orders'),
                         child: Container(
+                          child: Image.asset('assets/images/charging.png'),
                           width: double.infinity,
                           height: height * 0.1,
                           decoration: BoxDecoration(
@@ -349,11 +369,16 @@ class StationScreenState extends State<StationScreen> {
                       ),
                     ),
                     SizedBox(height: height * 0.009),
-                    Text(
-                      'Booking',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: FittedBox(
+                        child: Text(
+                          'Charging\n    Type',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: !tabLayout && !largeLayout ? 12 : 14),
+                        ),
+                      ),
                     )
                   ],
                 ),

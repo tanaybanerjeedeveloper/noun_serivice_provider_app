@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
+import 'screens/add_station_screen.dart';
 import 'widgets/bottom_navigation_bar.dart';
 
 void main() {
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: BottomNavigation(),
+      routes: {
+        AddStationScreen.routeName: (context) => AddStationScreen(),
+      },
     );
   }
 }
