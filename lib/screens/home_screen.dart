@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'station_screen.dart';
+import 'station_details.dart';
 
 class HomeScreen extends StatefulWidget {
   //TabBarScreen({Key? key}) : super(key: key);
@@ -41,11 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: TabBarView(children: [
           StationScreen(),
-          Center(
-            child: Text(
-              'Page 2',
-            ),
-          ),
+          StationDetailsScreen(),
           Center(
             child: Text(
               'Page 3',
