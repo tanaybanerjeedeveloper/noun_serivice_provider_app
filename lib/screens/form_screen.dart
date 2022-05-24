@@ -23,8 +23,13 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   File? imageAadharFront;
   File? imageAadharBack;
-  FilePickerResult? result;
-  PlatformFile? file;
+  FilePickerResult? gstResult;
+  PlatformFile? gstFile;
+  PlatformFile? gstDoc;
+  PlatformFile? stationLicenseDoc;
+
+  String fileOneName = '';
+  String fileTwoName = '';
 
   Future pickImageAadharFront(ImageSource source) async {
     try {
@@ -52,6 +57,21 @@ class _FormScreenState extends State<FormScreen> {
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
     }
+  }
+
+  Future<void> pickFiles() async {
+    gstResult = await FilePicker.platform.pickFiles();
+    if (gstResult == null) return;
+    gstFile = gstResult!.files.first;
+    viewFile(gstFile!);
+  }
+
+  void viewFile(PlatformFile file) {
+    OpenFile.open(file.path);
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
   }
 
   @override
@@ -277,7 +297,21 @@ class _FormScreenState extends State<FormScreen> {
             child: Row(
               children: [
                 InkWell(
-                  onTap: () => print('tapped'),
+                  onTap: () async {
+                    final filePickerOne = await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png']);
+                    if (filePickerOne == null) return;
+
+                    final fileOne = filePickerOne.files.first;
+                    openFile(fileOne);
+                    print('Name: ${fileOne.name}');
+
+                    setState(() {
+                      fileOneName = fileOne.name;
+                      gstDoc = fileOne;
+                    });
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       // color: Colors.blue,
@@ -489,7 +523,21 @@ class _FormScreenState extends State<FormScreen> {
             child: Row(
               children: [
                 InkWell(
-                  onTap: () => print('tapped'),
+                  onTap: () async {
+                    final filePickerOne = await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png']);
+                    if (filePickerOne == null) return;
+
+                    final fileOne = filePickerOne.files.first;
+                    openFile(fileOne);
+                    print('Name: ${fileOne.name}');
+
+                    setState(() {
+                      fileTwoName = fileOne.name;
+                      stationLicenseDoc = fileOne;
+                    });
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
