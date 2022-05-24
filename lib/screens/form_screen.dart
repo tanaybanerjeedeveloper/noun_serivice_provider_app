@@ -40,14 +40,14 @@ class _FormScreenState extends State<FormScreen> {
     }
   }
 
-  Future pickImageAadharBack() async {
-    print('back image selected');
+  Future pickImageAadharBack(ImageSource source) async {
     try {
-      final img = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (img == null) return;
-      final imgTemporary = File(img.path);
+      final img = await ImagePicker().pickImage(source: source);
+      final imageTemporary = File(img!.path);
+      print('Temp Image: $imageTemporary');
       setState(() {
-        this.imageAadharBack = imgTemporary;
+        imageAadharBack = imageTemporary;
+        print('Image $imageAadharBack');
       });
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -416,13 +416,17 @@ class _FormScreenState extends State<FormScreen> {
                   width: mediaQuery.width * 0.1,
                 ),
                 InkWell(
-                  onTap: () => pickImageAadharBack(),
+                  onTap: () => pickImageAadharBack(ImageSource.gallery),
                   child: Container(
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/img.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
+                      image: (imageAadharBack != null)
+                          ? DecorationImage(
+                              image: FileImage(imageAadharBack!),
+                              fit: BoxFit.scaleDown)
+                          : DecorationImage(
+                              image: AssetImage('assets/images/img.png'),
+                              fit: BoxFit.scaleDown,
+                            ),
                       // color: Colors.blue,
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(10.0),
