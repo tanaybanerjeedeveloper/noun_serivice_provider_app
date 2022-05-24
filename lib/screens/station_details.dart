@@ -10,7 +10,7 @@ class StationDetailsScreen extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        height: mediaQuery.height * 0.6,
+        height: mediaQuery.height * 0.5,
         decoration: kContainer,
         // margin: EdgeInsets.symmetric(
         //     vertical: mediaQuery.height * 0.15, horizontal: 20.0),
@@ -20,28 +20,21 @@ class StationDetailsScreen extends StatelessWidget {
             horizontal: mediaQuery.width * 0.05),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text('Name'),
-                Text('Lightning bolt'),
-              ],
-            ),
             SizedBox(
-              height: mediaQuery.height * 0.05,
+              height: mediaQuery.height * 0.02,
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Expanded(
                     child: Container(
                       child: Text(
-                        'Address',
-                        textAlign: TextAlign.center,
+                        'Name',
+                        // textAlign: TextAlign.left,
                       ),
-                      color: Colors.red,
+                      // color: Colors.red,
                     ),
                     flex: 2,
                   ),
@@ -50,7 +43,100 @@ class StationDetailsScreen extends StatelessWidget {
                     flex: 2,
                     child: Container(
                       width: 110,
-                      child: Text('489 banerjee para road, kolkata-41'),
+                      child: Text(
+                        'Lightning Bolt',
+                        style: TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: mediaQuery.height * 0.02,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Text(
+                        'Address',
+                        // textAlign: TextAlign.left,
+                      ),
+                      // color: Colors.red,
+                    ),
+                    flex: 2,
+                  ),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 2,
+                    child: Container(
+                      width: 110,
+                      child: Text('489 banerjee para road, kolkata-41',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: mediaQuery.height * 0.02,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Text(
+                        'Charging',
+                        // textAlign: TextAlign.left,
+                      ),
+                      // color: Colors.red,
+                    ),
+                    flex: 2,
+                  ),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 2,
+                    child: Container(
+                      width: 110,
+                      child: Text('AC/DC Fast Charge',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: mediaQuery.height * 0.02,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Text(
+                        'GST Number',
+                        // textAlign: TextAlign.left,
+                      ),
+                      // color: Colors.red,
+                    ),
+                    flex: 2,
+                  ),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 2,
+                    child: Container(
+                      width: 110,
+                      child: Text('456789101112',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ),
                 ],
