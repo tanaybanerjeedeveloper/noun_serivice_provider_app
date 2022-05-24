@@ -389,10 +389,14 @@ class _FormScreenState extends State<FormScreen> {
                   onTap: () => pickImageAadharFront(ImageSource.gallery),
                   child: Container(
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/img.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
+                      image: (imageAadharFront != null)
+                          ? DecorationImage(
+                              image: FileImage(imageAadharFront!),
+                              fit: BoxFit.scaleDown)
+                          : DecorationImage(
+                              image: AssetImage('assets/images/img.png'),
+                              fit: BoxFit.scaleDown,
+                            ),
                       // color: Colors.blue,
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(10.0),
