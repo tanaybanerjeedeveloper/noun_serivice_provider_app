@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/add_station_screen.dart';
+import 'screens/form_screen.dart';
 import 'widgets/bottom_navigation_bar.dart';
 
 void main() {
@@ -25,9 +26,12 @@ class MyApp extends StatelessWidget {
           tertiary: const Color(0xff11131b),
         ),
       ),
-      home: BottomNavigation(),
+      // home: BottomNavigation(),
+      home: FormScreen(),
       routes: {
         AddStationScreen.routeName: (context) => AddStationScreen(),
+        FormScreen.routeName: (context) => FormScreen(),
+        BottomNavigation.routeName: (context) => BottomNavigation(),
       },
     );
   }

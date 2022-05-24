@@ -8,7 +8,7 @@ import '../screens/payment_history_screen.dart';
 import '../screens/booking_upcoming_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
-  static const id = 'bottom_navigation_bar';
+  static const routeName = 'bottom_navigation_bar';
   BottomNavigationState createState() => BottomNavigationState();
 }
 
