@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:noun_service_app/widgets/bottom_navigation_bar.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dart:async';
+import 'package:open_file/open_file.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:path/path.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/button.dart';
@@ -14,6 +21,39 @@ class FormScreen extends StatefulWidget {
 }
 
 class _FormScreenState extends State<FormScreen> {
+  File? imageAadharFront;
+  File? imageAadharBack;
+  FilePickerResult? result;
+  PlatformFile? file;
+
+  Future pickImageAadharFront(ImageSource source) async {
+    try {
+      final img = await ImagePicker().pickImage(source: source);
+      final imageTemporary = File(img!.path);
+      print('Temp Image: $imageTemporary');
+      setState(() {
+        imageAadharFront = imageTemporary;
+        print('Image $imageAadharFront');
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  Future pickImageAadharBack() async {
+    print('back image selected');
+    try {
+      final img = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (img == null) return;
+      final imgTemporary = File(img.path);
+      setState(() {
+        this.imageAadharBack = imgTemporary;
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -346,7 +386,7 @@ class _FormScreenState extends State<FormScreen> {
             child: Row(
               children: [
                 InkWell(
-                  onTap: () => print('tapped'),
+                  onTap: () => pickImageAadharFront(ImageSource.gallery),
                   child: Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -371,25 +411,28 @@ class _FormScreenState extends State<FormScreen> {
                 SizedBox(
                   width: mediaQuery.width * 0.1,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/img.png'),
-                      fit: BoxFit.scaleDown,
+                InkWell(
+                  onTap: () => pickImageAadharBack(),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/img.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                      // color: Colors.blue,
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: [
+                        const BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(-4, -4),
+                          blurRadius: 10,
+                        )
+                      ],
                     ),
-                    // color: Colors.blue,
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      const BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(-4, -4),
-                        blurRadius: 10,
-                      )
-                    ],
+                    height: mediaQuery.height * 0.15,
+                    width: mediaQuery.width * 0.3,
                   ),
-                  height: mediaQuery.height * 0.15,
-                  width: mediaQuery.width * 0.3,
                 ),
               ],
             ),
