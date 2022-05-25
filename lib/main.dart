@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:noun_service_app/screens/login_screen.dart';
+import 'package:noun_service_app/screens/otp_screen.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/add_station_screen.dart';
 import 'screens/form_screen.dart';
+import 'screens/qr_code_screen.dart';
 import 'widgets/bottom_navigation_bar.dart';
 
 void main() {
@@ -27,11 +30,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: BottomNavigation(),
-      home: FormScreen(),
+      home: LoginScreen(),
       routes: {
         AddStationScreen.routeName: (context) => AddStationScreen(),
         FormScreen.routeName: (context) => FormScreen(),
         BottomNavigation.routeName: (context) => BottomNavigation(),
+        OtpScreen.routeName: (context) => OtpScreen(),
+        QRCodeScreen.routeName: (context) => QRCodeScreen(),
       },
     );
   }

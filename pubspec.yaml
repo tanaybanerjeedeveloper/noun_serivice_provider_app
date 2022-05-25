@@ -42,6 +42,7 @@ dependencies:
   path_provider: ^2.0.9
   path: ^1.8.0
   image_picker: ^0.8.5+3
+  qr_flutter: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,10 @@ flutter:
     - assets/images/charging.png
     - assets/images/img.png
     - assets/images/pdf.png
+    - assets/images/logo.png
+    - assets/images/fb.png
+    - assets/images/gmail.png
+    - assets/images/background.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'add_station_screen.dart';
+import 'qr_code_screen.dart';
 
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
@@ -191,8 +192,8 @@ class StationScreenState extends State<StationScreen> {
                         top: height * 0.002,
                         right: height * 0.01),
                     child: InkWell(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed('/cancelled-orders'),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(QRCodeScreen.routeName),
                       child: Container(
                         child: Image.asset('assets/images/qrcode.png'),
                         width: double.infinity,

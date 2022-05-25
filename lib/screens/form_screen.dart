@@ -524,6 +524,7 @@ class _FormScreenState extends State<FormScreen> {
               children: [
                 InkWell(
                   onTap: () async {
+                    print('clicked');
                     final filePickerOne = await FilePicker.platform.pickFiles(
                         type: FileType.custom,
                         allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png']);
@@ -747,9 +748,16 @@ class _FormScreenState extends State<FormScreen> {
           SizedBox(
             height: mediaQuery.height * 0.07,
           ),
+          // Center(
+          //   child: Button('SAVE', () {
+          //     Navigator.pushNamed(context, BottomNavigation.routeName);
+          //   }),
           Center(
             child: Button('SAVE', () {
-              Navigator.pushNamed(context, BottomNavigation.routeName);
+              Timer(
+                  const Duration(milliseconds: 500),
+                  () =>
+                      Navigator.pushNamed(context, BottomNavigation.routeName));
             }),
           ),
           SizedBox(

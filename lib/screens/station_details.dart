@@ -45,7 +45,7 @@ class StationDetailsScreen extends StatelessWidget {
                       width: 110,
                       child: Text(
                         'Lightning Bolt',
-                        style: TextStyle(fontWeight: FontWeight.w800),
+                        style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),
@@ -74,9 +74,9 @@ class StationDetailsScreen extends StatelessWidget {
                     fit: FlexFit.tight,
                     flex: 2,
                     child: Container(
-                      width: 110,
+                      // width: 110,
                       child: Text('489 banerjee para road, kolkata-41',
-                          style: TextStyle(fontWeight: FontWeight.w800)),
+                          style: TextStyle(fontWeight: FontWeight.w700)),
                     ),
                   ),
                 ],
@@ -106,7 +106,7 @@ class StationDetailsScreen extends StatelessWidget {
                     child: Container(
                       width: 110,
                       child: Text('AC/DC Fast Charge',
-                          style: TextStyle(fontWeight: FontWeight.w800)),
+                          style: TextStyle(fontWeight: FontWeight.w700)),
                     ),
                   ),
                 ],
@@ -136,7 +136,7 @@ class StationDetailsScreen extends StatelessWidget {
                     child: Container(
                       width: 110,
                       child: Text('456789101112',
-                          style: TextStyle(fontWeight: FontWeight.w800)),
+                          style: TextStyle(fontWeight: FontWeight.w700)),
                     ),
                   ),
                 ],
