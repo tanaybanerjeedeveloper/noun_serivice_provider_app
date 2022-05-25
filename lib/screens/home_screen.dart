@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'station_screen.dart';
 import 'station_details.dart';
+import 'about_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   //TabBarScreen({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.tertiary,
+          automaticallyImplyLeading: false,
           elevation: 0,
           title: Row(
             children: [
@@ -43,11 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: TabBarView(children: [
           StationScreen(),
           StationDetailsScreen(),
-          Center(
-            child: Text(
-              'Page 3',
-            ),
-          ),
+          AboutScreen(),
         ]),
       ),
     );

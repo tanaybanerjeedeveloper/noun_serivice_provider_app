@@ -18,7 +18,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MyAppBar('QR Code'),
+      appBar: MyAppBar('QR Code', true),
       body: SingleChildScrollView(
         child: Container(
           height: mediaQuery.height * 1,
@@ -68,9 +68,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
               ),
               Text(
                 'Scan OR Code',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
               ),
             ],
           ),

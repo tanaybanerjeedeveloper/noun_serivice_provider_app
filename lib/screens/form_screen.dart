@@ -78,7 +78,7 @@ class _FormScreenState extends State<FormScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MyAppBar('Form'),
+      appBar: MyAppBar('Form', false),
       body: ListView(
         children: [
           Padding(
@@ -114,6 +114,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration: kTextFieldDecoration.copyWith(hintText: 'Your Name'),
             ),
           ),
@@ -155,6 +156,7 @@ class _FormScreenState extends State<FormScreen> {
               onChanged: (value) {},
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'somewhat@gmail.com'),
+              cursorColor: Theme.of(context).primaryColor,
             ),
           ),
           SizedBox(
@@ -193,6 +195,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration: kTextFieldDecoration.copyWith(hintText: 'AC/DC Type'),
             ),
           ),
@@ -232,6 +235,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration: kTextFieldDecoration.copyWith(hintText: 'Kolkata'),
             ),
           ),
@@ -271,6 +275,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '123456789012'),
             ),
@@ -315,9 +320,9 @@ class _FormScreenState extends State<FormScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       // color: Colors.blue,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage('assets/images/pdf.png'),
-                        fit: BoxFit.scaleDown,
+                        fit: BoxFit.none,
                       ),
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(10.0),
@@ -394,6 +399,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '12345678912'),
             ),
@@ -543,7 +549,7 @@ class _FormScreenState extends State<FormScreen> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/pdf.png'),
-                        fit: BoxFit.scaleDown,
+                        fit: BoxFit.none,
                       ),
                       // color: Colors.blue,
                       color: Theme.of(context).colorScheme.secondary,
@@ -621,6 +627,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '123456789012'),
             ),
@@ -661,6 +668,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '123456789012'),
             ),
@@ -701,6 +709,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '123456789012'),
             ),
@@ -741,6 +750,7 @@ class _FormScreenState extends State<FormScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: '123456789012'),
             ),

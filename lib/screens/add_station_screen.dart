@@ -66,7 +66,7 @@ class _AddStationScreenState extends State<AddStationScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MyAppBar('Add Station'),
+      appBar: MyAppBar('Add Station', true),
       body: ListView(
         children: [
           Padding(
