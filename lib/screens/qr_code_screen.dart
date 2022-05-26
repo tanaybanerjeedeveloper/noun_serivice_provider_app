@@ -67,7 +67,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                 height: mediaQuery.height * 0.15,
               ),
               Text(
-                'Scan OR Code',
+                'Scan QR Code',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
               ),
             ],

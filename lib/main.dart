@@ -6,7 +6,9 @@ import 'screens/home_screen.dart';
 import 'screens/add_station_screen.dart';
 import 'screens/form_screen.dart';
 import 'screens/qr_code_screen.dart';
+import 'screens/dashboard_screen.dart';
 import 'widgets/bottom_navigation_bar.dart';
+import 'screens/just_for.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
         BottomNavigation.routeName: (context) => BottomNavigation(),
         OtpScreen.routeName: (context) => OtpScreen(),
         QRCodeScreen.routeName: (context) => QRCodeScreen(),
+        DashboardScreen.routeName: (context) => DashboardScreen(),
+        JustFor.routeName: (context) => JustFor(),
       },
     );
   }

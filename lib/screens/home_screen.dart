@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'station_screen.dart';
 import 'station_details.dart';
 import 'about_screen.dart';
+import '../widgets/dropdown_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   //TabBarScreen({Key? key}) : super(key: key);
@@ -30,10 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 5,
               ),
-              Text(
-                'Salt Lake',
-                style: TextStyle(fontSize: 15),
-              ),
+              // Text(
+              //   'Salt Lake',
+              //   style: TextStyle(fontSize: 15),
+              // ),
+              DropdownWidget(dataList: ['Salt Lake', 'Kudghat']),
             ],
           ),
           bottom: TabBar(indicatorColor: Theme.of(context).primaryColor, tabs: [

@@ -43,6 +43,8 @@ dependencies:
   path: ^1.8.0
   image_picker: ^0.8.5+3
   qr_flutter: ^4.0.0
+  fl_chart: ^0.41.0
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +89,7 @@ flutter:
     - assets/images/fb.png
     - assets/images/gmail.png
     - assets/images/background.png
+    - assets/images/offer2.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

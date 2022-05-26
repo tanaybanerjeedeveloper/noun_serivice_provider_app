@@ -102,6 +102,7 @@ class _AddStationScreenState extends State<AddStationScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Station Name'),
             ),
@@ -142,6 +143,7 @@ class _AddStationScreenState extends State<AddStationScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration: kTextFieldDecoration.copyWith(
                   hintText: 'Charging Station Type'),
             ),
@@ -182,6 +184,7 @@ class _AddStationScreenState extends State<AddStationScreen> {
             ),
             child: TextField(
               onChanged: (value) {},
+              cursorColor: Theme.of(context).primaryColor,
               decoration:
                   kTextFieldDecoration.copyWith(hintText: 'Station Location'),
             ),

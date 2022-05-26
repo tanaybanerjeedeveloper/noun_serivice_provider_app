@@ -6,6 +6,8 @@ import '../screens/notifications_screen.dart';
 import '../screens/booking_history_screen.dart';
 import '../screens/payment_history_screen.dart';
 import '../screens/booking_upcoming_screen.dart';
+import '../screens/dashboard_screen.dart';
+import '../screens/just_for.dart';
 
 class BottomNavigation extends StatefulWidget {
   static const routeName = 'bottom_navigation_bar';
@@ -19,8 +21,9 @@ class BottomNavigationState extends State<BottomNavigation> {
     NotificationsScreen(),
     BookingHistoryScreen(),
     HomeScreen(),
-    BookingUpcomingScreen(),
-    PaymentHistoryScreen(),
+    DashboardScreen(),
+    // PaymentHistoryScreen(),
+    JustFor(),
   ];
 
   @override
