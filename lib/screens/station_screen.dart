@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'add_station_screen.dart';
 import 'qr_code_screen.dart';
+import './charging_port_screen.dart';
 
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
@@ -348,8 +349,8 @@ class StationScreenState extends State<StationScreen> {
                           top: height * 0.002,
                           right: height * 0.01),
                       child: InkWell(
-                        onTap: () =>
-                            Navigator.of(context).pushNamed('/present-orders'),
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(ChargingPortScreen.routeName),
                         child: Container(
                           child: Image.asset('assets/images/charging.png'),
                           width: double.infinity,

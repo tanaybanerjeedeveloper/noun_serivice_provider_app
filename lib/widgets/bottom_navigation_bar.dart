@@ -22,8 +22,8 @@ class BottomNavigationState extends State<BottomNavigation> {
     BookingHistoryScreen(),
     HomeScreen(),
     DashboardScreen(),
-    // PaymentHistoryScreen(),
-    JustFor(),
+    PaymentHistoryScreen(),
+    // JustFor(),
   ];
 
   @override
