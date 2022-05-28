@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noun_service_app/screens/login_screen.dart';
 import 'package:noun_service_app/screens/otp_screen.dart';
+import 'package:noun_service_app/screens/slot_booking_screen.dart';
 
 import 'screens/home_screen.dart';
 import 'screens/add_station_screen.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         DashboardScreen.routeName: (context) => DashboardScreen(),
         JustFor.routeName: (context) => JustFor(),
         ChargingPortScreen.routeName: (context) => ChargingPortScreen(),
+        SlotBookingScreen.routeName: (context) => SlotBookingScreen(),
       },
     );
   }

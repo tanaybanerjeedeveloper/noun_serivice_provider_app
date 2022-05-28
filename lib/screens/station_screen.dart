@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'add_station_screen.dart';
 import 'qr_code_screen.dart';
 import './charging_port_screen.dart';
+import './slot_booking_screen.dart';
 
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
@@ -29,40 +30,45 @@ class StationScreenState extends State<StationScreen> {
             left: width * 0.25,
             top: !tabLayout && !largeLayout ? height * 0.42 : height * 0.27,
             right: width * 0.25,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '15',
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'slots remaining',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              width: width * 0.05,
-              height: height * 0.15,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.tertiary,
-                border: Border.all(color: color, width: 3),
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/semi.png'),
-                  fit: BoxFit.fill,
+            child: InkWell(
+              onTap: () =>
+                  Navigator.pushNamed(context, SlotBookingScreen.routeName),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '15',
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'slots remaining',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: color,
-                    blurRadius: 10,
-                    offset: Offset(1, 2),
-                  )
-                ],
+                width: width * 0.05,
+                height: height * 0.15,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.tertiary,
+                  border: Border.all(color: color, width: 3),
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/semi.png'),
+                    fit: BoxFit.fill,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: color,
+                      blurRadius: 10,
+                      offset: Offset(1, 2),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
