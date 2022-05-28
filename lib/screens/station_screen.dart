@@ -4,6 +4,9 @@ import 'add_station_screen.dart';
 import 'qr_code_screen.dart';
 import './charging_port_screen.dart';
 import './slot_booking_screen.dart';
+import './booking_upcoming_screen.dart';
+import './booking_history_screen.dart';
+import './payment_history_screen.dart';
 
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
@@ -92,8 +95,8 @@ class StationScreenState extends State<StationScreen> {
                           top: height * 0.002,
                           right: height * 0.01),
                       child: InkWell(
-                        onTap: () =>
-                            Navigator.of(context).pushNamed('/present-orders'),
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(BookingUpcomingScreen.routeName),
                         child: Container(
                           child: Image.asset('assets/images/charging.png'),
                           width: double.infinity,
@@ -145,8 +148,8 @@ class StationScreenState extends State<StationScreen> {
                         top: height * 0.002,
                         right: height * 0.01),
                     child: InkWell(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed('/order-history'),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(BookingHistoryScreen.routeName),
                       child: Container(
                         child: Image.asset('assets/images/timer.png'),
                         width: double.infinity,
@@ -304,8 +307,8 @@ class StationScreenState extends State<StationScreen> {
                         top: height * 0.002,
                         right: height * 0.01),
                     child: InkWell(
-                      onTap: () =>
-                          Navigator.of(context).pushNamed('/profile-screen'),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(PaymentHistoryScreen.routeName),
                       child: Container(
                         child: Image.asset('assets/images/payment2.png'),
                         width: double.infinity,

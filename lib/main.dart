@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noun_service_app/screens/booking_history_screen.dart';
+import 'package:noun_service_app/screens/booking_upcoming_screen.dart';
 import 'package:noun_service_app/screens/login_screen.dart';
 import 'package:noun_service_app/screens/otp_screen.dart';
 import 'package:noun_service_app/screens/slot_booking_screen.dart';
@@ -11,6 +13,7 @@ import 'screens/dashboard_screen.dart';
 import 'widgets/bottom_navigation_bar.dart';
 import 'screens/just_for.dart';
 import 'screens/charging_port_screen.dart';
+import 'screens/payment_history_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,6 +48,9 @@ class MyApp extends StatelessWidget {
         JustFor.routeName: (context) => JustFor(),
         ChargingPortScreen.routeName: (context) => ChargingPortScreen(),
         SlotBookingScreen.routeName: (context) => SlotBookingScreen(),
+        BookingUpcomingScreen.routeName: (context) => BookingUpcomingScreen(),
+        BookingHistoryScreen.routeName: (context) => BookingHistoryScreen(),
+        PaymentHistoryScreen.routeName: (context) => PaymentHistoryScreen(),
       },
     );
   }

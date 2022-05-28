@@ -4,6 +4,7 @@ import '../widgets/booking_list_item.dart';
 
 class BookingUpcomingScreen extends StatelessWidget {
   //const BookingScreen({Key? key}) : super(key: key);
+  static const routeName = 'booking_upcoming_screen';
 
   @override
   Widget build(BuildContext context) {

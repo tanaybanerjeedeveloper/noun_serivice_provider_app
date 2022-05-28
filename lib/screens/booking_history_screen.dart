@@ -4,6 +4,7 @@ import '../widgets/booking_list_item.dart';
 
 class BookingHistoryScreen extends StatelessWidget {
   //const BookingScreen({Key? key}) : super(key: key);
+  static const routeName = 'booking_history_screen';
 
   @override
   Widget build(BuildContext context) {

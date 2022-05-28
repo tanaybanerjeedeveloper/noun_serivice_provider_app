@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../widgets/payment_list_item.dart';
 
 class PaymentHistoryScreen extends StatelessWidget {
   //const PaymentHistoryScreen({Key? key}) : super(key: key);
+  static const routeName = 'payment_history_screen';
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +15,13 @@ class PaymentHistoryScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.tertiary,
         title: Text('Payment History'),
       ),
-      body: Center(
-        child: Text(
-          'Payment History',
-          textAlign: TextAlign.center,
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return PaymentListItem();
+          },
+          itemCount: 5,
         ),
       ),
     );
