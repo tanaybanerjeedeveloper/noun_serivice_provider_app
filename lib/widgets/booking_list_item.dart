@@ -2,6 +2,23 @@ import 'package:flutter/material.dart';
 
 class BookingListItem extends StatelessWidget {
   // const BookingListItem({Key? key}) : super(key: key);
+  final String carImg;
+  final String carBrand;
+  final String carType;
+  final String bookingDate;
+  final String bookingPrice;
+  final String bookingTime;
+  final String bookingPower;
+
+  BookingListItem({
+    required this.bookingDate,
+    required this.carBrand,
+    required this.carType,
+    required this.bookingPower,
+    required this.bookingPrice,
+    required this.bookingTime,
+    required this.carImg,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +49,7 @@ class BookingListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Image.asset(
-                      'assets/images/car.png',
+                      carImg,
                       width: 70,
                       height: 70,
                     ),
@@ -47,7 +64,7 @@ class BookingListItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Gimenez',
+                          carBrand,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 19,
@@ -55,7 +72,7 @@ class BookingListItem extends StatelessWidget {
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          'Lamborghini Sian',
+                          carType,
                           style: TextStyle(color: Colors.grey, fontSize: 13.0),
                         ),
                       ],
@@ -85,7 +102,7 @@ class BookingListItem extends StatelessWidget {
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '2/2/2022',
+                            bookingDate,
                             style: TextStyle(
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
@@ -102,7 +119,7 @@ class BookingListItem extends StatelessWidget {
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '9:30 pm',
+                            bookingTime,
                             style: TextStyle(
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
@@ -119,7 +136,7 @@ class BookingListItem extends StatelessWidget {
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '50KwH',
+                            bookingPower,
                             style: TextStyle(
                                 fontSize: 13.0, fontWeight: FontWeight.bold),
                           ),
@@ -146,7 +163,7 @@ class BookingListItem extends StatelessWidget {
                       ),
                       FittedBox(
                         child: Text(
-                          '₹ 852',
+                          '₹ $bookingPrice',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.bold,
