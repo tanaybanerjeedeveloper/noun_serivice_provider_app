@@ -9,6 +9,7 @@ class BookingListItem extends StatelessWidget {
   final String bookingPrice;
   final String bookingTime;
   final String bookingPower;
+  final String portType;
 
   BookingListItem({
     required this.bookingDate,
@@ -18,12 +19,18 @@ class BookingListItem extends StatelessWidget {
     required this.bookingPrice,
     required this.bookingTime,
     required this.carImg,
+    required this.portType,
   });
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(bottom: 25),
+      margin: const EdgeInsets.only(bottom: 25),
+      padding: EdgeInsets.symmetric(
+        vertical: mediaQuery.height * 0.01,
+        horizontal: mediaQuery.width * 0.01,
+      ),
       decoration: BoxDecoration(
           color: const Color(0xff1f1f1f),
           borderRadius: BorderRadius.circular(12),
@@ -36,6 +43,7 @@ class BookingListItem extends StatelessWidget {
             ),
           ]),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -44,14 +52,25 @@ class BookingListItem extends StatelessWidget {
             ),
             child: IntrinsicHeight(
               child: Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Image.asset(
-                      carImg,
-                      width: 70,
-                      height: 70,
+                    // Image.asset(
+                    //   carImg,
+                    //   width: 70,
+                    //   height: 70,
+                    // ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Port No.'),
+                        SizedBox(height: 5.0),
+                        Text(
+                          '1',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                     VerticalDivider(
                       color: Theme.of(context).primaryColor,
@@ -64,15 +83,15 @@ class BookingListItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          carBrand,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 19,
-                          ),
+                          'Port Type',
+                          // style: TextStyle(
+                          //   fontWeight: FontWeight.bold,
+                          //   fontSize: 19,
+                          // ),
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          carType,
+                          portType,
                           style: TextStyle(color: Colors.grey, fontSize: 13.0),
                         ),
                       ],
@@ -82,8 +101,63 @@ class BookingListItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 10.0,
+          // SizedBox(
+          //   width: mediaQuery.width * 0.02,
+          // ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    const Text(
+                      'Date:',
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      bookingDate,
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: mediaQuery.height * 0.015,
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Time:',
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      bookingTime,
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: mediaQuery.height * 0.015,
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Power:',
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      bookingPower,
+                      style: TextStyle(
+                          fontSize: 13.0, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 15.0),
@@ -91,59 +165,6 @@ class BookingListItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Date:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            bookingDate,
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Time:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            bookingTime,
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Power:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            bookingPower,
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
                   VerticalDivider(
                     color: Theme.of(context).primaryColor,
                     width: 20,
@@ -154,19 +175,28 @@ class BookingListItem extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Price',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(
-                        height: 6.0,
+                        height: mediaQuery.height * 0.01,
                       ),
-                      FittedBox(
-                        child: Text(
-                          '₹ $bookingPrice',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Container(
+                          width: mediaQuery.width * 0.1,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              '₹ $bookingPrice',
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0),
+                            ),
                           ),
                         ),
                       )

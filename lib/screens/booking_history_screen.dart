@@ -34,6 +34,7 @@ class BookingHistoryScreen extends StatelessWidget {
               carBrand: bookings[index].carBrand,
               carImg: bookings[index].carImg,
               carType: bookings[index].carType,
+              portType: bookings[index].portType,
             );
           },
           itemCount: bookings.length,

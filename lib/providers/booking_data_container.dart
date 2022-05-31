@@ -12,7 +12,8 @@ class BookingDataContainer with ChangeNotifier {
         carBrand: 'Gimenez',
         carImg: 'assets/images/car.png',
         carType: 'Lamborghini Sian',
-        id: '1'),
+        id: '1',
+        portType: 'Chadmeo'),
     BookingItem(
         bookingDate: '2/3/2022',
         bookingPower: '50KwH',
@@ -21,7 +22,8 @@ class BookingDataContainer with ChangeNotifier {
         carBrand: 'Gimenez',
         carImg: 'assets/images/car.png',
         carType: 'Lamborghini Sian',
-        id: '2'),
+        id: '2',
+        portType: 'CCS'),
     BookingItem(
         bookingDate: '2/3/2022',
         bookingPower: '50KwH',
@@ -30,7 +32,8 @@ class BookingDataContainer with ChangeNotifier {
         carBrand: 'Gimenez',
         carImg: 'assets/images/car.png',
         carType: 'Lamborghini Sian',
-        id: '3'),
+        id: '3',
+        portType: 'CCS'),
     BookingItem(
         bookingDate: '2/3/2022',
         bookingPower: '50KwH',
@@ -39,7 +42,8 @@ class BookingDataContainer with ChangeNotifier {
         carBrand: 'Gimenez',
         carImg: 'assets/images/car.png',
         carType: 'Lamborghini Sian',
-        id: '4'),
+        id: '4',
+        portType: 'Chadmeo'),
     BookingItem(
         bookingDate: '2/3/2022',
         bookingPower: '50KwH',
@@ -48,7 +52,8 @@ class BookingDataContainer with ChangeNotifier {
         carBrand: 'Gimenez',
         carImg: 'assets/images/car.png',
         carType: 'Lamborghini Sian',
-        id: '5'),
+        id: '5',
+        portType: 'CCS'),
   ];
 
   List<BookingItem> get bookings {

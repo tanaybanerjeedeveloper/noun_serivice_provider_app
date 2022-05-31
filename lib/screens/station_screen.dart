@@ -48,9 +48,18 @@ class StationScreenState extends State<StationScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      'slots remaining',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: Container(
+                        width: 75,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'slots remaining',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

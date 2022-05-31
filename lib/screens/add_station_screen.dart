@@ -40,7 +40,15 @@ class _AddStationScreenState extends State<AddStationScreen> {
               },
             ),
           ),
-          title: Text(chargingType.title),
+          title: Container(
+            width: 100,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                chargingType.title,
+              ),
+            ),
+          ),
         ),
       );
 
@@ -243,6 +251,9 @@ class _AddStationScreenState extends State<AddStationScreen> {
             height: mediaQuery.height * 0.02,
           ),
           Center(child: Button('NEXT', () {})),
+          SizedBox(
+            height: mediaQuery.height * 0.05,
+          ),
         ],
       ),
     );
