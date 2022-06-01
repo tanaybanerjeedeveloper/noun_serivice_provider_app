@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:noun_service_app/screens/slot_booking_screen.dart';
 import 'package:path/path.dart';
 
 import '../widgets/app_bar.dart';
 import '../models/charging_port.dart';
 import '../widgets/charging_port_bar.dart';
 
-class ChargingPortScreen extends StatefulWidget {
-  static const routeName = 'charging_port_screen';
+class AfterSlotsRemaining extends StatefulWidget {
+  static const routeName = 'after_slots_remaining';
 
   @override
-  State<ChargingPortScreen> createState() => _ChargingPortScreenState();
+  State<AfterSlotsRemaining> createState() => _AfterSlotsRemainingState();
 }
 
-class _ChargingPortScreenState extends State<ChargingPortScreen> {
+class _AfterSlotsRemainingState extends State<AfterSlotsRemaining> {
   //const ChargingPortScreen({Key? key}) : super(key: key);
   final List<ChargingPort> _chargingPortList = [
     ChargingPort(title: 'CCS', price: 123),
@@ -99,28 +100,32 @@ class _ChargingPortScreenState extends State<ChargingPortScreen> {
       appBar: MyAppBar('Charging Port', true),
       body: Column(
         children: [
-          Text('Add charging port type'),
+          Text('Select the port types to see the slots remaining'),
           SizedBox(
             height: mediaQuery.height * 0.05,
           ),
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return ChargingPortBar(title: _chargingPortList[index].title);
+                return GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                        context, SlotBookingScreen.routeName),
+                    child:
+                        ChargingPortBar(title: _chargingPortList[index].title));
               },
               itemCount: _chargingPortList.length,
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () => _startAddNewChargingPort(context),
-        child: Icon(
-          Icons.add,
-          color: Colors.black,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   onPressed: () => _startAddNewChargingPort(context),
+      //   child: Icon(
+      //     Icons.add,
+      //     color: Colors.black,
+      //   ),
+      // ),
     );
   }
 }

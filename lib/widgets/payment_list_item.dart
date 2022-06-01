@@ -5,7 +5,9 @@ class PaymentListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
     return Container(
+      padding: EdgeInsets.all(15),
       margin: EdgeInsets.only(bottom: 25),
       decoration: BoxDecoration(
           color: const Color(0xff1f1f1f),
@@ -18,147 +20,81 @@ class PaymentListItem extends StatelessWidget {
               spreadRadius: 0.5,
             ),
           ]),
-      child: Row(
+      child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Theme.of(context).primaryColor),
-            ),
-            child: IntrinsicHeight(
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset(
-                      'assets/images/car.png',
-                      width: 70,
-                      height: 70,
-                    ),
-                    VerticalDivider(
-                      color: Theme.of(context).primaryColor,
-                      width: 20,
-                      thickness: 1,
-                      indent: 1,
-                      endIndent: 1,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Gimenez',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 19,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          'Lamborghini Sian',
-                          style: TextStyle(color: Colors.grey, fontSize: 13.0),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Date'),
+              Text(
+                '2/2/2022',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-            ),
+            ],
           ),
           SizedBox(
-            width: 10.0,
+            height: mediaQuery.height * 0.001,
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: IntrinsicHeight(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Date:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '2/2/2022',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Time:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '9:30 pm',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 12.0,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Power:',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '50KwH',
-                            style: TextStyle(
-                                fontSize: 13.0, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  VerticalDivider(
+          Divider(
+            color: Theme.of(context).primaryColor,
+            thickness: .5,
+          ),
+          SizedBox(
+            height: mediaQuery.height * 0.001,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Price'),
+              Text(
+                '₹ 456',
+                style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    width: 20,
-                    thickness: 1,
-                    indent: 1,
-                    endIndent: 1,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Price',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 6.0,
-                      ),
-                      FittedBox(
-                        child: Text(
-                          '₹ 852',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0),
               ),
-            ),
-          )
+            ],
+          ),
+          SizedBox(
+            height: mediaQuery.height * 0.001,
+          ),
+          Divider(
+            color: Theme.of(context).primaryColor,
+            thickness: .5,
+          ),
+          SizedBox(
+            height: mediaQuery.height * 0.001,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Time'),
+              Text(
+                '9:50 am',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: mediaQuery.height * 0.001,
+          ),
+          Divider(
+            color: Theme.of(context).primaryColor,
+            thickness: .5,
+          ),
+          SizedBox(
+            height: mediaQuery.height * 0.001,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Power'),
+              Text(
+                '50KwH',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ],
       ),
     );

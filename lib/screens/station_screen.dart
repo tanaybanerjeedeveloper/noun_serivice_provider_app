@@ -7,6 +7,8 @@ import './slot_booking_screen.dart';
 import './booking_upcoming_screen.dart';
 import './booking_history_screen.dart';
 import './payment_history_screen.dart';
+import './charging_port_screen.dart';
+import './after_slots_remaining_screen.dart';
 
 class StationScreen extends StatefulWidget {
   StationScreenState createState() => StationScreenState();
@@ -35,7 +37,8 @@ class StationScreenState extends State<StationScreen> {
             right: width * 0.25,
             child: InkWell(
               onTap: () =>
-                  Navigator.pushNamed(context, SlotBookingScreen.routeName),
+                  //Navigator.pushNamed(context, SlotBookingScreen.routeName),
+                  Navigator.pushNamed(context, AfterSlotsRemaining.routeName),
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +110,7 @@ class StationScreenState extends State<StationScreen> {
                         onTap: () => Navigator.of(context)
                             .pushNamed(BookingUpcomingScreen.routeName),
                         child: Container(
-                          child: Image.asset('assets/images/charging.png'),
+                          child: Image.asset('assets/images/upcoming.png'),
                           width: double.infinity,
                           height: height * 0.1,
                           decoration: BoxDecoration(
@@ -393,7 +396,7 @@ class StationScreenState extends State<StationScreen> {
                       fit: FlexFit.loose,
                       child: FittedBox(
                         child: Text(
-                          'Charging\n    Type',
+                          'Charging\n    Port',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: !tabLayout && !largeLayout ? 12 : 14),

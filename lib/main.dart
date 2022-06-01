@@ -17,6 +17,7 @@ import 'screens/charging_port_screen.dart';
 import 'screens/payment_history_screen.dart';
 import 'providers/booking_data_container.dart';
 import 'providers/charging_port_type_data_container.dart';
+import 'screens/after_slots_remaining_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
           BookingUpcomingScreen.routeName: (context) => BookingUpcomingScreen(),
           BookingHistoryScreen.routeName: (context) => BookingHistoryScreen(),
           PaymentHistoryScreen.routeName: (context) => PaymentHistoryScreen(),
+          AfterSlotsRemaining.routeName: (context) => AfterSlotsRemaining(),
         },
       ),
     );
