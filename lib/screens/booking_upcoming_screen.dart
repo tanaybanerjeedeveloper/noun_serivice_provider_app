@@ -86,7 +86,7 @@ class _BookingUpcomingScreenState extends State<BookingUpcomingScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
         backgroundColor: Theme.of(context).colorScheme.tertiary,
@@ -97,6 +97,11 @@ class _BookingUpcomingScreenState extends State<BookingUpcomingScreen> {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Theme.of(context).colorScheme.secondary,
+              ),
               width: mediaQuery.width * 0.5,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(

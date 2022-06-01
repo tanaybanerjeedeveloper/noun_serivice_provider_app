@@ -248,7 +248,7 @@ class _AddStationScreenState extends State<AddStationScreen> {
             ),
           ),
           SizedBox(
-            height: mediaQuery.height * 0.02,
+            height: mediaQuery.height * 0.05,
           ),
           Center(child: Button('NEXT', () {})),
           SizedBox(
