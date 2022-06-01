@@ -56,6 +56,11 @@ class BookingDataContainer with ChangeNotifier {
         portType: 'CCS'),
   ];
 
+  // List<String> chargingPortTypeList = [
+  //   'CCS',
+  //   'Chadmeo',
+  // ];
+
   List<BookingItem> get bookings {
     return [..._bookings];
   }

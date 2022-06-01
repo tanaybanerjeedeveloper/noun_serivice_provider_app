@@ -16,6 +16,7 @@ import 'screens/just_for.dart';
 import 'screens/charging_port_screen.dart';
 import 'screens/payment_history_screen.dart';
 import 'providers/booking_data_container.dart';
+import 'providers/charging_port_type_data_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,8 +28,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => BookingDataContainer(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => BookingDataContainer()),
+        ChangeNotifierProvider(create: (ctx) => ChargingPortDataContainer()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
