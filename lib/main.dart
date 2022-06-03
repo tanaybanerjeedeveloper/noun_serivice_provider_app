@@ -17,6 +17,7 @@ import 'screens/charging_port_screen.dart';
 import 'screens/payment_history_screen.dart';
 import 'providers/booking_data_container.dart';
 import 'providers/charging_port_type_data_container.dart';
+import 'providers/user_data_container.dart';
 import 'screens/after_slots_remaining_screen.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => BookingDataContainer()),
         ChangeNotifierProvider(create: (ctx) => ChargingPortDataContainer()),
+        ChangeNotifierProvider(create: (ctx) => UserDataContainer()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

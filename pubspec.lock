@@ -56,7 +56,7 @@ packages:
       name: cross_file
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.3"
+    version: "0.3.3+1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -105,7 +105,7 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.5.1"
+    version: "4.6.1"
   fl_chart:
     dependency: "direct main"
     description:
@@ -226,6 +226,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  modal_progress_hud_nsn:
+    dependency: "direct main"
+    description:
+      name: modal_progress_hud_nsn
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   nested:
     dependency: transitive
     description:
@@ -274,7 +281,7 @@ packages:
       name: path_provider_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   path_provider_macos:
     dependency: transitive
     description:
@@ -295,7 +302,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.6"
+    version: "2.0.7"
   platform:
     dependency: transitive
     description:

@@ -1,6 +1,11 @@
 import 'dart:async';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import '../utilities/config.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_data_container.dart';
 
 import '../utilities/constants.dart';
 import '../widgets/button.dart';
@@ -19,6 +24,12 @@ class _OtpScreenState extends State<OtpScreen> {
   FocusNode? pin2FocusNode;
   FocusNode? pin3FocusNode;
   FocusNode? pin4FocusNode;
+  var _firstField;
+  var _secondField;
+  var _thirdField;
+  var _fourthField;
+  var phoneNumber;
+  var otp;
 
   @override
   void initState() {
@@ -26,6 +37,8 @@ class _OtpScreenState extends State<OtpScreen> {
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
+    phoneNumber =
+        Provider.of<UserDataContainer>(context, listen: false).phoneNumber;
   }
 
   @override
@@ -39,6 +52,35 @@ class _OtpScreenState extends State<OtpScreen> {
   void nextField(String value, FocusNode? focusNode) {
     if (value.length == 1) {
       focusNode!.requestFocus();
+    }
+  }
+
+  Future<void> _submitOTP(
+      {required BuildContext context,
+      required String firstVal,
+      required String secondVal,
+      required String thirdVal,
+      required String fourthVal}) async {
+    otp = '$firstVal$secondVal$thirdVal$fourthVal';
+    print('OTP: $otp');
+    try {
+      var response = await http.post(
+        Uri.parse('$baseURL/station/verify-otp'),
+        body: json.encode({
+          "phone": phoneNumber,
+          "otp": otp,
+        }),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 202) {
+        print('response: ${response.body}');
+        print('otp verified');
+        Navigator.pushNamed(context, FormScreen.routeName);
+      } else {
+        print('failed');
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 
@@ -92,6 +134,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(border: InputBorder.none),
                       onChanged: (value) {
+                        _firstField = value;
                         nextField(value, pin2FocusNode);
                       },
                     ),
@@ -119,7 +162,10 @@ class _OtpScreenState extends State<OtpScreen> {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(border: InputBorder.none),
-                      onChanged: (value) => nextField(value, pin3FocusNode),
+                      onChanged: (value) {
+                        _secondField = value;
+                        nextField(value, pin3FocusNode);
+                      },
                     ),
                   ),
                   Container(
@@ -137,16 +183,18 @@ class _OtpScreenState extends State<OtpScreen> {
                     ),
                     width: 60,
                     child: TextFormField(
-                      focusNode: pin3FocusNode,
-                      autofocus: true,
-                      // obscureText: true,
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(border: InputBorder.none),
-                      onChanged: (value) => nextField(value, pin4FocusNode),
-                    ),
+                        focusNode: pin3FocusNode,
+                        autofocus: true,
+                        // obscureText: true,
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(border: InputBorder.none),
+                        onChanged: (value) {
+                          _thirdField = value;
+                          nextField(value, pin4FocusNode);
+                        }),
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -173,6 +221,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       decoration: InputDecoration(border: InputBorder.none),
                       onChanged: (value) {
                         if (value.length == 1) {
+                          _fourthField = value;
                           pin4FocusNode!.unfocus();
                           // Then you need to check is the code is correct or not
                         }
@@ -186,8 +235,21 @@ class _OtpScreenState extends State<OtpScreen> {
               height: mediaQuery.height * 0.2,
             ),
             Button('VERIFY', () {
-              Timer(const Duration(milliseconds: 500),
-                  () => Navigator.pushNamed(context, FormScreen.routeName));
+              Timer(const Duration(milliseconds: 500), () {
+                print('firstField: $_firstField');
+                print('secondField: $_secondField');
+                print('thirdField: $_thirdField');
+                print('fourthField: $_fourthField');
+                print('phoneNumber: $phoneNumber');
+                _submitOTP(
+                    context: context,
+                    firstVal: _firstField,
+                    secondVal: _secondField,
+                    thirdVal: _thirdField,
+                    fourthVal: _fourthField);
+              });
+              // Timer(const Duration(milliseconds: 500),
+              //     () => Navigator.pushNamed(context, FormScreen.routeName));
             }),
           ],
         ),
