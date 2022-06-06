@@ -67,7 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: ModalProgressHUD(
         inAsyncCall: _showSpinner,
-        progressIndicator: CircularProgressIndicator(),
+        progressIndicator: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ),
         child: Form(
           key: key,
           child: SingleChildScrollView(
@@ -193,13 +195,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     Button(
                       'LOGIN',
                       () {
-                        setState(() {
-                          _showSpinner = true;
+                        Timer(const Duration(milliseconds: 500), () {
+                          setState(() {
+                            _showSpinner = true;
+                          });
+                          print('from here: $_phoneNumber');
+                          if (key.currentState!.validate()) {
+                            _login(_phoneNumber!, context);
+                          }
                         });
-                        print('from here: $_phoneNumber');
-                        if (key.currentState!.validate()) {
-                          _login(_phoneNumber!, context);
-                        }
                       },
                     ),
                     // ElevatedButton(

@@ -77,9 +77,24 @@ class _OtpScreenState extends State<OtpScreen> {
         print('otp verified');
         Navigator.pushNamed(context, FormScreen.routeName);
       } else {
+        final text = 'Incorrect OTP';
+        final snackBar = SnackBar(
+          content: Text(
+            text,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.redAccent,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
         print('failed');
       }
     } catch (e) {
+      final text = 'Error occurred';
+      final snackBar = SnackBar(content: Text(text));
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       print(e.toString());
     }
   }
