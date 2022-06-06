@@ -30,6 +30,8 @@ class _OtpScreenState extends State<OtpScreen> {
   var _fourthField;
   var phoneNumber;
   var otp;
+  var userID;
+  var userData;
 
   @override
   void initState() {
@@ -37,8 +39,13 @@ class _OtpScreenState extends State<OtpScreen> {
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
-    phoneNumber =
-        Provider.of<UserDataContainer>(context, listen: false).phoneNumber;
+    // phoneNumber =
+    //     Provider.of<UserDataContainer>(context, listen: false).phoneNumber;
+    // userID = Provider.of<UserDataContainer>(context).userID;
+    userData = Provider.of<UserDataContainer>(context,
+        listen: false); //taking the whole userData map
+    phoneNumber = userData.phoneNumber;
+    // userID = userData.userID;
   }
 
   @override
@@ -74,7 +81,14 @@ class _OtpScreenState extends State<OtpScreen> {
       );
       if (response.statusCode == 202) {
         print('response: ${response.body}');
-        print('otp verified');
+        //print('otp verified');
+
+        final convertedData = json.decode(response.body); //parsing json data
+        userID = convertedData['userData'][0]['id'];
+        print('userID: $userID');
+        print('${userID.runtimeType}');
+        userData.userID = userID;
+        //print('status: ${convertedData['status']}');
         Navigator.pushNamed(context, FormScreen.routeName);
       } else {
         final text = 'Incorrect OTP';
