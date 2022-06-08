@@ -6,6 +6,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_data_container.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utilities/constants.dart';
 import '../widgets/button.dart';
@@ -39,12 +40,12 @@ class _OtpScreenState extends State<OtpScreen> {
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
-    // phoneNumber =
-    //     Provider.of<UserDataContainer>(context, listen: false).phoneNumber;
+    phoneNumber =
+        Provider.of<UserDataContainer>(context, listen: false).phoneNumber;
     // userID = Provider.of<UserDataContainer>(context).userID;
-    userData = Provider.of<UserDataContainer>(context,
-        listen: false); //taking the whole userData map
-    phoneNumber = userData.phoneNumber;
+    // userData = Provider.of<UserDataContainer>(context,
+    //     listen: false); //taking the whole userData map
+    // phoneNumber = userData.phoneNumber;
     // userID = userData.userID;
   }
 
@@ -62,53 +63,72 @@ class _OtpScreenState extends State<OtpScreen> {
     }
   }
 
-  Future<void> _submitOTP(
+  // Future<void> _submitOTP(
+  //     {required BuildContext context,
+  //     required String firstVal,
+  //     required String secondVal,
+  //     required String thirdVal,
+  //     required String fourthVal}) async {
+  //   otp = '$firstVal$secondVal$thirdVal$fourthVal';
+  //   print('OTP: $otp');
+  //   try {
+  //     var response = await http.post(
+  //       Uri.parse('$baseURL/station/verify-otp'),
+  //       body: json.encode({
+  //         "phone": phoneNumber,
+  //         "otp": otp,
+  //       }),
+  //       headers: {'Content-Type': 'application/json'},
+  //     );
+  //     if (response.statusCode == 202) {
+  //       print('response: ${response.body}');
+  //       //print('otp verified');
+
+  //       final convertedData = json.decode(response.body); //parsing json data
+  //       userID = convertedData['userData'][0]['id'];
+  //       print('userID: $userID');
+  //       print('${userID.runtimeType}');
+  //       userData.userID = userID;
+  //       //print('status: ${convertedData['status']}');
+  //       Navigator.pushNamed(context, FormScreen.routeName);
+  //     } else {
+  //       final text = 'Incorrect OTP';
+  //       final snackBar = SnackBar(
+  //         content: Text(
+  //           text,
+  //           style: TextStyle(
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         ),
+  //         backgroundColor: Colors.redAccent,
+  //       );
+  //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //       print('failed');
+  //     }
+  //   } catch (e) {
+  //     final text = 'Error occurred';
+  //     final snackBar = SnackBar(content: Text(text));
+
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //     print(e.toString());
+  //   }
+  // }
+
+  void _submit(
       {required BuildContext context,
       required String firstVal,
       required String secondVal,
       required String thirdVal,
       required String fourthVal}) async {
-    otp = '$firstVal$secondVal$thirdVal$fourthVal';
-    print('OTP: $otp');
     try {
-      var response = await http.post(
-        Uri.parse('$baseURL/station/verify-otp'),
-        body: json.encode({
-          "phone": phoneNumber,
-          "otp": otp,
-        }),
-        headers: {'Content-Type': 'application/json'},
-      );
-      if (response.statusCode == 202) {
-        print('response: ${response.body}');
-        //print('otp verified');
-
-        final convertedData = json.decode(response.body); //parsing json data
-        userID = convertedData['userData'][0]['id'];
-        print('userID: $userID');
-        print('${userID.runtimeType}');
-        userData.userID = userID;
-        //print('status: ${convertedData['status']}');
-        Navigator.pushNamed(context, FormScreen.routeName);
-      } else {
-        final text = 'Incorrect OTP';
-        final snackBar = SnackBar(
-          content: Text(
-            text,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          backgroundColor: Colors.redAccent,
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        print('failed');
-      }
+      await Provider.of<UserDataContainer>(context, listen: false).submitOTP(
+          context: context,
+          firstVal: firstVal,
+          secondVal: secondVal,
+          thirdVal: thirdVal,
+          fourthVal: fourthVal);
+      //Navigator.pushNamed(context, FormScreen.routeName);
     } catch (e) {
-      final text = 'Error occurred';
-      final snackBar = SnackBar(content: Text(text));
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       print(e.toString());
     }
   }
@@ -270,7 +290,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 print('thirdField: $_thirdField');
                 print('fourthField: $_fourthField');
                 print('phoneNumber: $phoneNumber');
-                _submitOTP(
+                _submit(
                     context: context,
                     firstVal: _firstField,
                     secondVal: _secondField,

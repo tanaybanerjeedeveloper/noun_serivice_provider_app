@@ -36,34 +36,37 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => ChargingPortDataContainer()),
         ChangeNotifierProvider(create: (ctx) => UserDataContainer()),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: Color(0xff11131b),
-          primaryColor: Color(0xff00ffba),
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            secondary: const Color(0xff1f1f1f),
-            tertiary: const Color(0xff11131b),
+      child: Consumer<UserDataContainer>(
+        builder: (ctx, userData, _) => MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: Color(0xff11131b),
+            primaryColor: Color(0xff00ffba),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              secondary: const Color(0xff1f1f1f),
+              tertiary: const Color(0xff11131b),
+            ),
           ),
+          // home: BottomNavigation(),
+          home: LoginScreen(),
+          routes: {
+            AddStationScreen.routeName: (context) => AddStationScreen(),
+            FormScreen.routeName: (context) => FormScreen(),
+            BottomNavigation.routeName: (context) => BottomNavigation(),
+            OtpScreen.routeName: (context) => OtpScreen(),
+            QRCodeScreen.routeName: (context) => QRCodeScreen(),
+            DashboardScreen.routeName: (context) => DashboardScreen(),
+            JustFor.routeName: (context) => JustFor(),
+            ChargingPortScreen.routeName: (context) => ChargingPortScreen(),
+            SlotBookingScreen.routeName: (context) => SlotBookingScreen(),
+            BookingUpcomingScreen.routeName: (context) =>
+                BookingUpcomingScreen(),
+            BookingHistoryScreen.routeName: (context) => BookingHistoryScreen(),
+            PaymentHistoryScreen.routeName: (context) => PaymentHistoryScreen(),
+            AfterSlotsRemaining.routeName: (context) => AfterSlotsRemaining(),
+          },
         ),
-        // home: BottomNavigation(),
-        home: LoginScreen(),
-        routes: {
-          AddStationScreen.routeName: (context) => AddStationScreen(),
-          FormScreen.routeName: (context) => FormScreen(),
-          BottomNavigation.routeName: (context) => BottomNavigation(),
-          OtpScreen.routeName: (context) => OtpScreen(),
-          QRCodeScreen.routeName: (context) => QRCodeScreen(),
-          DashboardScreen.routeName: (context) => DashboardScreen(),
-          JustFor.routeName: (context) => JustFor(),
-          ChargingPortScreen.routeName: (context) => ChargingPortScreen(),
-          SlotBookingScreen.routeName: (context) => SlotBookingScreen(),
-          BookingUpcomingScreen.routeName: (context) => BookingUpcomingScreen(),
-          BookingHistoryScreen.routeName: (context) => BookingHistoryScreen(),
-          PaymentHistoryScreen.routeName: (context) => PaymentHistoryScreen(),
-          AfterSlotsRemaining.routeName: (context) => AfterSlotsRemaining(),
-        },
       ),
     );
   }

@@ -6,11 +6,15 @@ import 'dart:io';
 import 'dart:async';
 import 'package:open_file/open_file.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:dio/dio.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_data_container.dart';
 import 'package:path/path.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/button.dart';
 import '../utilities/constants.dart';
+import '../utilities/config.dart';
 
 class FormScreen extends StatefulWidget {
   //FormScreen({Key? key}) : super(key: key);
@@ -27,11 +31,34 @@ class _FormScreenState extends State<FormScreen> {
   PlatformFile? gstFile;
   PlatformFile? gstDoc;
   PlatformFile? stationLicenseDoc;
+  PlatformFile? panDoc;
+  var _token;
+  var _userID;
+
   final _formKey = GlobalKey<FormState>();
-  late String _name;
+  var _userData;
+  var _name;
+  late String _email;
+  late String _aadharNo;
+  late String _gstNo;
+  late String _panNo;
+  late String _bankName;
+  late String _accountNo;
+  late String _stationLicenseNo;
+  late String _ifscCode;
+  late String _upiCode;
 
   String fileOneName = '';
   String fileTwoName = '';
+  String fileThreeName = '';
+
+  @override
+  void initState() {
+    _userData = Provider.of<UserDataContainer>(this.context, listen: false);
+    _token = _userData.token;
+    _userID = _userData.id;
+    super.initState();
+  }
 
   Future pickImageAadharFront(ImageSource source) async {
     try {
@@ -76,8 +103,67 @@ class _FormScreenState extends State<FormScreen> {
     OpenFile.open(file.path!);
   }
 
-  void _onSubmit(BuildContext context) {
-    if (_formKey.currentState!.validate()) {}
+  Future<dynamic> _onSubmit(
+    // filePath: gstDoc, filePathTwo: stationLicenseDoc, filePathThree: panDoc
+    BuildContext context,
+    filePath,
+    filePathTwo,
+    filePathThree,
+  ) async {
+    if (_formKey.currentState!.validate()) {
+      print('submitted');
+      print('name $_name');
+      print('email $_email');
+      print('aadharNumber $_aadharNo');
+      print('gstNumber $_gstNo');
+      print('panNumber $_panNo');
+      print('bankName $_bankName');
+      print('accntyNumber $_accountNo');
+      print('stationNumber $_stationLicenseNo');
+      print('IFSC cODE $_ifscCode');
+      print('upiCode $_upiCode');
+      print('filePath: $filePath');
+      print('filePathTwo: $filePathTwo');
+      print('filePathThree: $fileThreeName');
+      print('imgAadharFront: $imageAadharFront');
+      print('imgAadharBack: $imageAadharBack');
+      print('token: $_token');
+      print('userID: $_userID');
+      String fileName = basename(filePath.path);
+      String fileNameTwo = basename(filePathTwo.path);
+      String fileNameThree = basename(filePathThree.path);
+      var formData = FormData.fromMap({
+        "userId": _userID,
+        "name": _name,
+        "email": _email,
+        "panNumber": _panNo,
+        "panDoc": await MultipartFile.fromFile(filePathThree.path,
+            filename: fileNameThree),
+        "gstNumber": _gstNo,
+        "gstCertificateDoc":
+            await MultipartFile.fromFile(filePath.path, filename: fileName),
+        "aadharNumber": _aadharNo,
+        "aadharFrontDoc": await MultipartFile.fromFile(imageAadharFront!.path),
+        "aadharBackDoc": await MultipartFile.fromFile(imageAadharBack!.path),
+        "stationLicenseNumber": _stationLicenseNo,
+        "stationLicenseDoc": await MultipartFile.fromFile(filePathTwo.path,
+            filename: fileNameTwo),
+        "bankName": _bankName,
+        "bankAccountNo": _accountNo,
+        "bankIfscCode": _ifscCode,
+        "bankUpi": _upiCode,
+      });
+
+      var response = await Dio().post(
+          '$baseURL/station/service-provider-documents-upload',
+          data: formData,
+          options: Options(headers: {
+            'Authorization': 'Bearer $_token',
+            'Content-Type': 'application/json'
+          }));
+      print('upload response: $response');
+      return response;
+    }
     // final isValid = _formKey.currentState!.validate();
 
     // if (isValid) {
@@ -429,8 +515,8 @@ class _FormScreenState extends State<FormScreen> {
                         print('Name: ${fileOne.name}');
 
                         setState(() {
-                          fileTwoName = fileOne.name;
-                          stationLicenseDoc = fileOne;
+                          fileThreeName = fileOne.name;
+                          panDoc = fileOne;
                         });
                       },
                       child: Container(
@@ -499,7 +585,9 @@ class _FormScreenState extends State<FormScreen> {
                 padding: const EdgeInsets.all(15.0),
                 child: TextFormField(
                   decoration: kTextFieldDecoration,
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _name = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter your name';
@@ -528,7 +616,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'somewhat@gmail.com'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _email = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter your email';
@@ -558,7 +648,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Your Aadhar Number'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _aadharNo = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter your Aadhar Number';
@@ -587,7 +679,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Your GST Number'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _gstNo = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter your GST Number';
@@ -616,7 +710,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'PAN Number'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _panNo = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter PAN Number';
@@ -645,7 +741,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'Your Bank Name'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _bankName = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter Bank Name';
@@ -674,7 +772,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Your Bank Account Number'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _accountNo = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter Bank Account Number';
@@ -703,7 +803,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Your Station License Number'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _stationLicenseNo = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter Station ';
@@ -732,7 +834,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'IFSC Code'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _ifscCode = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter IFSC Code';
@@ -761,7 +865,9 @@ class _FormScreenState extends State<FormScreen> {
                 child: TextFormField(
                   decoration:
                       kTextFieldDecoration.copyWith(hintText: 'UPI Code'),
-                  onSaved: (value) {},
+                  onChanged: (value) {
+                    _upiCode = value;
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Enter UPI Code';
@@ -775,7 +881,7 @@ class _FormScreenState extends State<FormScreen> {
               ),
               Center(
                 child: Button('SAVE', () {
-                  _onSubmit(context);
+                  _onSubmit(context, gstDoc, stationLicenseDoc, panDoc);
                 }),
               ),
               SizedBox(
